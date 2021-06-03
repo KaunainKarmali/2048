@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Poppins:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/8/8a/2048_logo.png"
+    />
+
+    <!-- Internal stylesheet -->
+    <link rel="stylesheet" href="./styles.css" />
+    <title>2048 🐯</title>
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <h1>2048</h1>
+      </div>
+
+      <div class="header-container">
+        <div class="score-board">
+          <h2 class="score-label">Score</h2>
+          <h2 class="score-current">0</h2>
+        </div>
+
+        <button class="new-game-btn"><h2>New game</h2></button>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="game-board">
+        <div class="row row-0">
+          <div class="box row-0 col-0"></div>
+          <div class="box row-0 col-1"></div>
+          <div class="box row-0 col-2"></div>
+          <div class="box row-0 col-3"></div>
+        </div>
+
+        <div class="row row-1">
+          <div class="box row-1 col-0"></div>
+          <div class="box row-1 col-1"></div>
+          <div class="box row-1 col-2"></div>
+          <div class="box row-1 col-3"></div>
+        </div>
+
+        <div class="row row-2">
+          <div class="box row-2 col-0"></div>
+          <div class="box row-2 col-1"></div>
+          <div class="box row-2 col-2"></div>
+          <div class="box row-2 col-3"></div>
+        </div>
+
+        <div class="row row-3">
+          <div class="box row-3 col-0"></div>
+          <div class="box row-3 col-1"></div>
+          <div class="box row-3 col-2"></div>
+          <div class="box row-3 col-3"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TODO: Show game over dialog box -->
+    <!-- <div class="game-over-container hide-container">
+      <h3 class="game-over-label">Game over!</h3>
+      <p class="game-over-score">Score: 0</p>
+
+      <div>
+        <button class="game-over-btn"><h2>Reset game</h2></button>
+      </div>
+    </div> -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
