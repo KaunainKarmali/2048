@@ -370,3 +370,27 @@ h2 {
 .hide-container {
   display: none;
 }
+
+@media (max-width: 450px) {
+  header {
+    width: 300px;
+  }
+
+  .game-board {
+    padding: 2.5px;
+    border-radius: 5px;
+  }
+
+  .box {
+    height: 70px;
+    width: 70px;
+    margin: 2.5px;
+    border-radius: 2.5px;
+    font-size: 2.5rem;
+    color: #fff;
+  }
+
+  .piece {
+    color: #000;
+  }
+}
