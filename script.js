@@ -456,11 +456,7 @@ gameApp.init = () => {
   });
 
   // event listner to recognize a user's key press
-  $("body").on("swiperight", (e) => {
-    // extract user's key press
-
-    console.log("swipped");
-
+  $("body").on("swipe", (e) => {
     // prevent user from scrolling the page with arrow keys when the game is played
     if (e.up || e.down || e.right || e.down) {
       e.preventDefault();
