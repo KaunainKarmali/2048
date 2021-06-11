@@ -15,6 +15,11 @@ gameApp.targetRow = null; // track target row to move a piece to
 gameApp.targetColumn = null; // track target column to move a piece to
 gameApp.totalScore = 0; // track target column to move a piece to
 
+// Mobile gestures variables
+gameApp.isSwiping = false; // Tracks whether the user is swiping or not
+gameApp.swipeStart = {}; // Tracks the starting coordinates of the swipe
+gameApp.swipeEnd = {}; // Tracks the ending coordinates of the swipe
+
 // **************** JQUERY HANDLES ****************
 gameApp.$gameBoard = $(".game-board");
 
@@ -393,6 +398,91 @@ gameApp.setScore = () => {
   $(".score-current").text(gameApp.totalScore);
 };
 
+// ******************* MOBILE GESTURE FUNCTIONS *************************
+// Tracks the starting coordinates for user swipe
+gameApp.touchStart = (event) => {
+  gameApp.isSwiping = true;
+  gameApp.swipeStart.pageX = event.originalEvent.targetTouches[0].pageX;
+  gameApp.swipeStart.pageY = event.originalEvent.targetTouches[0].pageY;
+
+  event.preventDefault();
+};
+
+// Tracks the ending coordinates for user swipe
+gameApp.touchMove = (event) => {
+  if (gameApp.isSwiping) {
+    gameApp.swipeEnd.pageX = event.originalEvent.targetTouches[0].pageX;
+    gameApp.swipeEnd.pageY = event.originalEvent.targetTouches[0].pageY;
+  }
+};
+
+// Determine the direction of the user's swipe action
+gameApp.getDirection = () => {
+  const changePageX = gameApp.swipeEnd.pageX - gameApp.swipeStart.pageX;
+  const changePageY = gameApp.swipeEnd.pageY - gameApp.swipeStart.pageY;
+
+  let direction = null;
+
+  if (
+    Number.isNaN(changePageX) === false ||
+    Number.isNaN(changePageY) === false
+  ) {
+    if (Math.abs(changePageX) > Math.abs(changePageY)) {
+      changePageX > 0 ? (direction = "right") : (direction = "left");
+    } else {
+      changePageY > 0 ? (direction = "down") : (direction = "up");
+    }
+  }
+
+  return direction;
+};
+
+// Determine when the user's swipe has ended
+gameApp.touchEnd = () => {
+  gameApp.isSwiping = false;
+
+  // Determine the direction of the user
+  const direction = gameApp.getDirection();
+  gameApp.swipeStart = {};
+  gameApp.swipeEnd = {};
+
+  // respond to keydown press if game is not over
+  if (gameApp.isGameOver === false) {
+    // right key press
+    direction === "right" && gameApp.rightPressed();
+
+    // left key press
+    direction === "left" && gameApp.leftPressed();
+
+    // up key press
+    direction === "up" && gameApp.upPressed();
+
+    // down key press
+    direction === "down" && gameApp.downPressed();
+  }
+
+  // move pieces on the board
+  gameApp.animationQueue.forEach((item) => {
+    gameApp.movePiece(item);
+  });
+
+  // create a new piece if atleast one another piece has moved
+  if (gameApp.animationQueue.length > 0) {
+    setTimeout(gameApp.createPiece, 400);
+  }
+
+  // reset variables
+  gameApp.stacked = {}; // empty stack
+  gameApp.animationQueue = []; // empty animation que
+
+  // check if game is over
+  gameApp.checkGameOver();
+
+  if (gameApp.isGameOver === true) {
+    gameApp.displayGameOver();
+  }
+};
+
 // TODO: Function to display allow user to reset when the game is over
 gameApp.displayGameOver = () => {};
 
@@ -404,6 +494,7 @@ gameApp.init = () => {
   gameApp.startNewGame();
 
   // event listner to recognize a user's key press
+  // REFACTOR WITH MOBILE SWIPES
   $("body").on("keydown", (e) => {
     // extract user's key press
     gameApp.keypress = parseInt(e.which);
@@ -455,49 +546,10 @@ gameApp.init = () => {
     }
   });
 
-  // event listner to recognize a user's key press
-  $("body").on("swipe", (e) => {
-    // prevent user from scrolling the page with arrow keys when the game is played
-    if (e.up || e.down || e.right || e.down) {
-      e.preventDefault();
-    }
-
-    // respond to keydown press if game is not over
-    if (gameApp.isGameOver === false) {
-      // right key press
-      e.right && gameApp.rightPressed();
-
-      // left key press
-      e.left && gameApp.leftPressed();
-
-      // up key press
-      e.up && gameApp.upPressed();
-
-      // down key press
-      e.down && gameApp.downPressed();
-    }
-
-    // move pieces on the board
-    gameApp.animationQueue.forEach((item) => {
-      gameApp.movePiece(item);
-    });
-
-    // create a new piece if atleast one another piece has moved
-    if (gameApp.animationQueue.length > 0) {
-      setTimeout(gameApp.createPiece, 400);
-    }
-
-    // reset variables
-    gameApp.stacked = {}; // empty stack
-    gameApp.animationQueue = []; // empty animation que
-
-    // check if game is over
-    gameApp.checkGameOver();
-
-    if (gameApp.isGameOver === true) {
-      gameApp.displayGameOver();
-    }
-  });
+  // Mobile swipe event listeners
+  $(".game-board").on("touchstart", gameApp.touchStart);
+  $(".game-board").on("touchmove", gameApp.touchMove);
+  $(".game-board").on("touchend", gameApp.touchEnd);
 
   $(".new-game-btn").on("click", () => {
     gameApp.startNewGame();
