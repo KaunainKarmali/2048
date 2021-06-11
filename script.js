@@ -455,49 +455,40 @@ gameApp.init = () => {
     }
   });
 
-  // event listner to recognize a user's key press
-  $("body").on("swipe", (e) => {
-    // prevent user from scrolling the page with arrow keys when the game is played
-    if (e.up || e.down || e.right || e.down) {
-      e.preventDefault();
-    }
+  // // event listner to recognize a user's key press
+  // $(".game-board").on("swiperight", (e) => {
+  //   console.log("swipping");
 
-    // respond to keydown press if game is not over
-    if (gameApp.isGameOver === false) {
-      // right key press
-      e.right && gameApp.rightPressed();
+  //   // prevent user from scrolling the page with arrow keys when the game is played
+  //   e.preventDefault();
 
-      // left key press
-      e.left && gameApp.leftPressed();
+  //   // respond to keydown press if game is not over
+  //   if (gameApp.isGameOver === false) {
+  //     // right key press
+  //     gameApp.rightPressed();
+  //   }
 
-      // up key press
-      e.up && gameApp.upPressed();
+  //   // move pieces on the board
+  //   gameApp.animationQueue.forEach((item) => {
+  //     gameApp.movePiece(item);
+  //   });
 
-      // down key press
-      e.down && gameApp.downPressed();
-    }
+  //   // create a new piece if atleast one another piece has moved
+  //   if (gameApp.animationQueue.length > 0) {
+  //     setTimeout(gameApp.createPiece, 400);
+  //   }
 
-    // move pieces on the board
-    gameApp.animationQueue.forEach((item) => {
-      gameApp.movePiece(item);
-    });
+  //   // reset variables
+  //   gameApp.stacked = {}; // empty stack
+  //   gameApp.animationQueue = []; // empty animation que
 
-    // create a new piece if atleast one another piece has moved
-    if (gameApp.animationQueue.length > 0) {
-      setTimeout(gameApp.createPiece, 400);
-    }
+  //   // check if game is over
+  //   gameApp.checkGameOver();
 
-    // reset variables
-    gameApp.stacked = {}; // empty stack
-    gameApp.animationQueue = []; // empty animation que
-
-    // check if game is over
-    gameApp.checkGameOver();
-
-    if (gameApp.isGameOver === true) {
-      gameApp.displayGameOver();
-    }
-  });
+  //   if (gameApp.isGameOver === true) {
+  //     gameApp.displayGameOver();
+  //   }
+  // });
 
   $(".new-game-btn").on("click", () => {
     gameApp.startNewGame();
