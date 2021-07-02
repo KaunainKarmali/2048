@@ -488,6 +488,7 @@ gameApp.touchEnd = () => {
 
 // Function to show the game is over to the user
 gameApp.displayGameOver = () => {
+  $(".game-over-score").text(`Score: ${gameApp.totalScore}`);
   gameApp.$gameOverContainer.removeClass("hide-container");
 };
 
@@ -553,6 +554,8 @@ gameApp.init = () => {
 
     if (gameApp.isGameOver === true) {
       gameApp.displayGameOver();
+    } else {
+      gameApp.removeDisplayGameOver();
     }
   });
 
