@@ -19,7 +19,9 @@
     />
 
     <!-- Internal stylesheet -->
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles/setup.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+
     <title>2048 🐯</title>
   </head>
   <body>
@@ -70,15 +72,19 @@
       </div>
     </div>
 
-    <!-- TODO: Show game over dialog box -->
-    <!-- <div class="game-over-container hide-container">
-      <h3 class="game-over-label">Game over!</h3>
-      <p class="game-over-score">Score: 0</p>
+    <!-- Game over dialog box -->
+    <div class="game-over-container">
+      <div class="game-over-inner">
+        <div class="game-over-content">
+          <h3 class="game-over-label">Game over!</h3>
+          <p class="game-over-score">Score: 0</p>
 
-      <div>
-        <button class="game-over-btn"><h2>Reset game</h2></button>
+          <div>
+            <button class="game-over-btn"><h2>Reset game</h2></button>
+          </div>
+        </div>
       </div>
-    </div> -->
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
