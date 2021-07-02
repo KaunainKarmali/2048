@@ -22,6 +22,7 @@ gameApp.swipeEnd = {}; // Tracks the ending coordinates of the swipe
 
 // **************** JQUERY HANDLES ****************
 gameApp.$gameBoard = $(".game-board");
+gameApp.$gameOverContainer = $(".game-over-container");
 
 // **************** FUNCTIONS ****************
 
@@ -480,11 +481,20 @@ gameApp.touchEnd = () => {
 
   if (gameApp.isGameOver === true) {
     gameApp.displayGameOver();
+  } else {
+    gameApp.removeDisplayGameOver();
   }
 };
 
-// TODO: Function to display allow user to reset when the game is over
-gameApp.displayGameOver = () => {};
+// Function to show the game is over to the user
+gameApp.displayGameOver = () => {
+  gameApp.$gameOverContainer.removeClass("hide-container");
+};
+
+// Function to remove game is over from the screen
+gameApp.removeDisplayGameOver = () => {
+  gameApp.$gameOverContainer.addClass("hide-container");
+};
 
 // **************** INIT FUNCTION ****************
 
@@ -551,7 +561,14 @@ gameApp.init = () => {
   $(".game-board").on("touchmove", gameApp.touchMove);
   $(".game-board").on("touchend", gameApp.touchEnd);
 
+  // Start new game when the button is selected
   $(".new-game-btn").on("click", () => {
+    gameApp.startNewGame();
+  });
+
+  // Listens to user clicking the reset button to restart the game once its over
+  $(".game-over-btn").on("click", () => {
+    gameApp.removeDisplayGameOver();
     gameApp.startNewGame();
   });
 };
