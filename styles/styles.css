@@ -89,15 +89,6 @@ h2 {
 .new-game-btn,
 .game-over-btn {
   width: 48%;
-  /* background-color: var(--color-primary);
-  color: var(--color-other-1);
-  text-align: center;
-  padding: 8px 8px;
-  border-radius: 5px;
-  font-size: 1rem;
-  margin: 0;
-  border: none;
-  transition: background 0.3s; */
 }
 
 .btn,
@@ -145,28 +136,6 @@ h2 {
   color: var(--color-secondary-contrast);
   background-color: var(--color-other-1);
 }
-
-/* Refactor with new game and game over btn */
-/* .close-instructions-btn {
-  background-color: var(--color-primary);
-  color: var(--color-other-1);
-  text-align: center;
-  padding: 3px 8px;
-  border-radius: 5px;
-  font-size: 1rem;
-  margin: 0;
-  border: none;
-  transition: background 0.3s;
-} */
-
-/* .new-game-btn:hover, */
-/* .game-over-btn:hover, */
-/* .close-instructions-btn:hover,
-.instructions-btn:hover, */
-/* .new-game-btn:focus, */
-/* .game-over-btn:focus, */
-/* .close-instructions-btn:focus,
-.instructions-btn:focus, */
 
 /************************/
 /****Game instructions***/
@@ -231,9 +200,6 @@ h2 {
   min-height: 420px;
   position: relative;
   flex-direction: column;
-  /* display: flex; */
-  /* justify-content: center;
-  align-items: center; */
 }
 
 /************************/
@@ -274,12 +240,6 @@ h2 {
 /************************/
 /****Game Over Styles****/
 /************************/
-
-/* .game-over-inner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
 .game-over-label,
 .instructions-title {
