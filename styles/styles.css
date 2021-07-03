@@ -30,7 +30,7 @@ body {
 
 header {
   margin: 0 auto;
-  width: 410px;
+  width: 371px;
 }
 
 h1 {
@@ -51,9 +51,14 @@ h2 {
   margin-bottom: 10px;
 }
 
+.instructions-btn-container {
+  margin-bottom: 10px;
+}
+
 .score-board,
 .new-game-btn,
-.game-over-btn {
+.game-over-btn,
+.instructions-btn {
   width: 45%;
   background-color: var(--color-primary);
   color: var(--color-other-1);
@@ -63,6 +68,26 @@ h2 {
   font-size: 1rem;
   margin: 0;
   border: none;
+  transition: background 0.3s;
+}
+
+.instructions-btn {
+  width: 100%;
+  background-color: var(--color-secondary-contrast);
+  border: 2px solid var(--color-secondary-contrast);
+}
+
+/* Refactor with new game and game over btn */
+.close-instructions-btn {
+  background-color: var(--color-primary);
+  color: var(--color-other-1);
+  text-align: center;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin: 0;
+  border: none;
+  transition: background 0.3s;
 }
 
 .new-game-btn,
@@ -71,9 +96,23 @@ h2 {
 }
 
 .new-game-btn:hover,
-.game-over-btn:hover {
+.game-over-btn:hover,
+.close-instructions-btn:hover,
+.instructions-btn:hover,
+.new-game-btn:focus,
+.game-over-btn:focus,
+.close-instructions-btn:focus,
+.instructions-btn:focus {
   cursor: pointer;
-  background-color: var(--color-primary-dark);
+  color: var(--color-other-1);
+  background-color: var(--color-secondary-dark);
+  outline: none;
+}
+
+.instructions-btn:focus,
+.instructions-btn:hover {
+  color: var(--color-secondary-contrast);
+  background-color: var(--color-other-1);
 }
 
 .score-label {
@@ -100,8 +139,8 @@ h2 {
 }
 
 .box {
-  height: 90px;
-  width: 90px;
+  height: 80px;
+  width: 80px;
   background-color: var(--color-primary);
   margin: 5px;
   border-radius: 5px;
@@ -123,9 +162,9 @@ h2 {
   color: #000;
 }
 
-/* Game over styles */
+/* Dialogue styles */
 
-.game-over-container {
+.dialogue-outter {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -139,10 +178,7 @@ h2 {
   bottom: 0;
 }
 
-.game-over-inner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.dialogue {
   margin-top: 80px;
   background-color: var(--color-primary-dark);
   color: var(--color-other-1);
@@ -153,6 +189,66 @@ h2 {
   max-height: 500px;
   min-width: 420px;
   min-height: 420px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Instructions styles */
+
+.instructions-content {
+  width: 80%;
+}
+
+.instructions-title {
+  text-align: left;
+}
+
+.instructions-subtitle {
+  font-size: calc(1rem + 1vw);
+  margin: 0;
+  color: var(--color-primary-light);
+}
+
+.instructions {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.desktop-instructions,
+.mobile-instructions {
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+.instructions-subtitle {
+}
+
+.close-instructions-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Game over styles */
+
+.game-over-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-over-label,
+.instructions-title {
+  font-size: calc(1rem + 5vw);
+  color: var(--color-secondary-contrast);
+  margin: 50px 0px;
+}
+
+.game-over-score {
+  font-size: 1.5rem;
 }
 
 .game-over-btn {
@@ -186,7 +282,8 @@ h2 {
     color: #000;
   }
 
-  .game-over-inner {
+  .game-over-inner,
+  .instructions-inner {
     width: 75vw;
     height: 400px;
     min-width: 310px;

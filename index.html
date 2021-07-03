@@ -12,6 +12,14 @@
       rel="stylesheet"
     />
 
+    <!-- Font awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+
     <!-- 2048 shortcut icon -->
     <link
       rel="shortcut icon"
@@ -28,6 +36,10 @@
     <header>
       <div class="title">
         <h1>2048</h1>
+      </div>
+
+      <div class="instructions-btn-container">
+        <button class="instructions-btn">Instructions on how to play</button>
       </div>
 
       <div class="header-container">
@@ -74,14 +86,47 @@
       </div>
 
       <!-- Game over dialog box -->
-      <div class="game-over-container hide-container">
-        <div class="game-over-inner">
+      <div class="game-over-container dialogue-outter hide-container">
+        <div class="game-over-inner dialogue">
           <div class="game-over-content">
             <h3 class="game-over-label">Game over!</h3>
             <p class="game-over-score">Score: 0</p>
 
             <div>
               <button class="game-over-btn"><h2>Reset game</h2></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game instructions dialog box -->
+      <div class="instructions-container dialogue-outter hide-container">
+        <div class="instructions-inner dialogue">
+          <div class="instructions-content">
+            <div>
+              <button class="close-instructions-btn">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <h3 class="instructions-title">How to play?</h3>
+            <div class="desktop-instructions">
+              <h4 class="instructions-subtitle">Desktop</h4>
+              <p class="instructions">
+                Use arrow keys
+                <span><i class="fas fa-long-arrow-alt-up"></i></span>
+                <span><i class="fas fa-long-arrow-alt-down"></i></span>
+                <span><i class="fas fa-long-arrow-alt-left"></i></span>
+                <span><i class="fas fa-long-arrow-alt-right"></i></span>
+                to move the tiles. Tiles of the same value will collapse and
+                increase your score.
+              </p>
+            </div>
+            <div class="mobile-instructions">
+              <h4 class="instructions-subtitle">Tablet and mobile</h4>
+              <p class="instructions">
+                Swipe up, down, left, right to move the tiles. Tiles of the same
+                value will collapse and increase your score.
+              </p>
             </div>
           </div>
         </div>
