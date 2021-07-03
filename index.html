@@ -39,7 +39,9 @@
       </div>
 
       <div class="instructions-btn-container">
-        <button class="instructions-btn">Instructions on how to play</button>
+        <button class="instructions-btn btn">
+          Instructions on how to play
+        </button>
       </div>
 
       <div class="header-container">
@@ -48,12 +50,12 @@
           <h2 class="score-current">0</h2>
         </div>
 
-        <button class="new-game-btn"><h2>New game</h2></button>
+        <button class="new-game-btn btn"><h2>New game</h2></button>
       </div>
     </header>
 
     <main>
-      <div class="container">
+      <div class="container flex-center-center">
         <div class="game-board">
           <div class="row row-0">
             <div class="box row-0 col-0"></div>
@@ -87,13 +89,13 @@
 
       <!-- Game over dialog box -->
       <div class="game-over-container dialogue-outter hide-container">
-        <div class="game-over-inner dialogue">
+        <div class="game-over-inner dialogue flex-center-center">
           <div class="game-over-content">
             <h3 class="game-over-label">Game over!</h3>
             <p class="game-over-score">Score: 0</p>
 
             <div>
-              <button class="game-over-btn"><h2>Reset game</h2></button>
+              <button class="game-over-btn btn"><h2>Reset game</h2></button>
             </div>
           </div>
         </div>
@@ -101,10 +103,10 @@
 
       <!-- Game instructions dialog box -->
       <div class="instructions-container dialogue-outter hide-container">
-        <div class="instructions-inner dialogue">
+        <div class="instructions-inner dialogue flex-center-center">
           <div class="instructions-content">
             <div>
-              <button class="close-instructions-btn">
+              <button class="close-instructions-btn btn">
                 <i class="fas fa-times"></i>
               </button>
             </div>
