@@ -48,11 +48,11 @@ h2 {
 
 .title {
   border-bottom: 2px solid var(--color-secondary-contrast);
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .instructions-btn-container {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .score-board,
@@ -242,7 +242,7 @@ h2 {
 
 .game-over-label,
 .instructions-title {
-  font-size: calc(1rem + 5vw);
+  font-size: calc(1rem + 3vw);
   color: var(--color-secondary-contrast);
   margin: 50px 0px;
 }
