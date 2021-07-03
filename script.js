@@ -22,6 +22,7 @@ gameApp.swipeEnd = {}; // Tracks the ending coordinates of the swipe
 
 // **************** JQUERY HANDLES ****************
 gameApp.$gameBoard = $(".game-board");
+gameApp.$instructionsContainer = $(".instructions-container");
 gameApp.$gameOverContainer = $(".game-over-container");
 
 // **************** FUNCTIONS ****************
@@ -497,6 +498,16 @@ gameApp.removeDisplayGameOver = () => {
   gameApp.$gameOverContainer.addClass("hide-container");
 };
 
+// Function to show the game instructions to the user
+gameApp.displayInstructions = () => {
+  gameApp.$instructionsContainer.removeClass("hide-container");
+};
+
+// Function to hide the game instructions
+gameApp.removeDisplayInstructions = () => {
+  gameApp.$instructionsContainer.addClass("hide-container");
+};
+
 // **************** INIT FUNCTION ****************
 
 // initialize app
@@ -573,6 +584,16 @@ gameApp.init = () => {
   $(".game-over-btn").on("click", () => {
     gameApp.removeDisplayGameOver();
     gameApp.startNewGame();
+  });
+
+  // Show instructions to the user
+  $(".instructions-btn").on("click", () => {
+    gameApp.displayInstructions();
+  });
+
+  // Show instructions to the user
+  $(".close-instructions-btn").on("click", () => {
+    gameApp.removeDisplayInstructions();
   });
 };
 
