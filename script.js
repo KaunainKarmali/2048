@@ -101,7 +101,7 @@ gameApp.createPiece = () => {
     let column = emptyBoxes[randomBox].column;
     let position = $(`.row-${row} .col-${column}`).position();
 
-    let newPiece = `<div id=piece-${gameApp.pieceId} class="box piece create-piece">${gameApp.value}</div>`;
+    let newPiece = `<div id=piece-${gameApp.pieceId} class="box piece create-piece flex-center-center">${gameApp.value}</div>`;
 
     gameApp.$gameBoard.append(newPiece);
     $(`#piece-${gameApp.pieceId}`).css(position);

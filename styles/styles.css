@@ -1,4 +1,6 @@
-/* Custom page styles  */
+/************************/
+/********Variables*******/
+/************************/
 
 :root {
   --color-primary: #364f6b;
@@ -11,9 +13,14 @@
 
   --color-other-1: #f5f5f6;
   --color-other-2: #e1e2e1;
+  --color-other-3: #000;
 
   --color-secondary-contrast: #fc5185;
 }
+
+/************************/
+/*******General**********/
+/************************/
 
 body {
   font-size: 62.5%;
@@ -46,21 +53,43 @@ h2 {
   font-size: 1rem;
 }
 
+.flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  margin: 10px;
+}
+
+/************************/
+/*******Header***********/
+/************************/
+
 .title {
   border-bottom: 2px solid var(--color-secondary-contrast);
   margin-bottom: 5px;
 }
 
-.instructions-btn-container {
-  margin-bottom: 5px;
+.header-container {
+  display: flex;
+  justify-content: space-between;
 }
+
+.score-label {
+  color: var(--color-primary-light);
+}
+
+/************************/
+/*******Button Styles****/
+/************************/
 
 .score-board,
 .new-game-btn,
-.game-over-btn,
-.instructions-btn {
-  width: 45%;
-  background-color: var(--color-primary);
+.game-over-btn {
+  width: 48%;
+  /* background-color: var(--color-primary);
   color: var(--color-other-1);
   text-align: center;
   padding: 8px 8px;
@@ -68,21 +97,15 @@ h2 {
   font-size: 1rem;
   margin: 0;
   border: none;
-  transition: background 0.3s;
+  transition: background 0.3s; */
 }
 
-.instructions-btn {
-  width: 100%;
-  background-color: var(--color-secondary-contrast);
-  border: 2px solid var(--color-secondary-contrast);
-}
-
-/* Refactor with new game and game over btn */
-.close-instructions-btn {
+.btn,
+.score-board {
   background-color: var(--color-primary);
   color: var(--color-other-1);
   text-align: center;
-  padding: 3px 8px;
+  padding: 8px 10px;
   border-radius: 5px;
   font-size: 1rem;
   margin: 0;
@@ -95,18 +118,26 @@ h2 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
-.new-game-btn:hover,
-.game-over-btn:hover,
-.close-instructions-btn:hover,
-.instructions-btn:hover,
-.new-game-btn:focus,
-.game-over-btn:focus,
-.close-instructions-btn:focus,
-.instructions-btn:focus {
+.btn:hover,
+.btn:focus {
   cursor: pointer;
   color: var(--color-other-1);
   background-color: var(--color-secondary-dark);
   outline: none;
+}
+
+/************************/
+/**Instructions Button***/
+/************************/
+
+.instructions-btn-container {
+  margin-bottom: 5px;
+}
+
+.instructions-btn {
+  width: 100%;
+  background-color: var(--color-secondary-contrast);
+  border: 2px solid var(--color-secondary-contrast);
 }
 
 .instructions-btn:focus,
@@ -115,21 +146,31 @@ h2 {
   background-color: var(--color-other-1);
 }
 
-.score-label {
-  color: var(--color-primary-light);
-}
+/* Refactor with new game and game over btn */
+/* .close-instructions-btn {
+  background-color: var(--color-primary);
+  color: var(--color-other-1);
+  text-align: center;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin: 0;
+  border: none;
+  transition: background 0.3s;
+} */
 
-.header-container {
-  display: flex;
-  justify-content: space-between;
-}
+/* .new-game-btn:hover, */
+/* .game-over-btn:hover, */
+/* .close-instructions-btn:hover,
+.instructions-btn:hover, */
+/* .new-game-btn:focus, */
+/* .game-over-btn:focus, */
+/* .close-instructions-btn:focus,
+.instructions-btn:focus, */
 
-.container {
-  margin: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/************************/
+/****Game instructions***/
+/************************/
 
 .game-board {
   padding: 5px;
@@ -145,7 +186,7 @@ h2 {
   margin: 5px;
   border-radius: 5px;
   font-size: 2.5rem;
-  color: #fff;
+  color: var(--color-other-1);
 }
 
 .row {
@@ -155,14 +196,13 @@ h2 {
 .piece {
   background-color: var(--color-secondary);
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 2.5rem;
-  color: #000;
+  color: var(--color-other-3);
 }
 
-/* Dialogue styles */
+/************************/
+/*******Dialogue*********/
+/************************/
 
 .dialogue-outter {
   display: flex;
@@ -171,11 +211,11 @@ h2 {
   text-align: center;
   position: absolute;
   z-index: 100;
-  background-color: rgba(0, 0, 0, 0.8);
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .dialogue {
@@ -190,13 +230,15 @@ h2 {
   min-width: 420px;
   min-height: 420px;
   position: relative;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: center;
+  align-items: center; */
 }
 
-/* Instructions styles */
+/************************/
+/*******Instructions*****/
+/************************/
 
 .instructions-content {
   width: 80%;
@@ -223,22 +265,21 @@ h2 {
   margin-bottom: 50px;
 }
 
-.instructions-subtitle {
-}
-
 .close-instructions-btn {
   position: absolute;
   top: 10px;
   right: 10px;
 }
 
-/* Game over styles */
+/************************/
+/****Game Over Styles****/
+/************************/
 
-.game-over-inner {
+/* .game-over-inner {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .game-over-label,
 .instructions-title {
@@ -259,10 +300,17 @@ h2 {
   display: none;
 }
 
+/************************/
+/****Media queries*******/
+/************************/
+
 @media (max-width: 450px) {
+  /* Header styles */
   header {
     width: 300px;
   }
+
+  /* Game board styles */
 
   .game-board {
     padding: 2.5px;
@@ -282,8 +330,9 @@ h2 {
     color: #000;
   }
 
-  .game-over-inner,
-  .instructions-inner {
+  /* Dialogue styles */
+
+  .dialogue {
     width: 75vw;
     height: 400px;
     min-width: 310px;
@@ -291,9 +340,9 @@ h2 {
   }
 }
 
-/********************************************************************/
-/**************************** Animations ****************************/
-/********************************************************************/
+/************************/
+/****Animations**********/
+/************************/
 
 .create-piece {
   -webkit-animation: animation 1000ms linear both;
